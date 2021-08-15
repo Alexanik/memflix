@@ -1,0 +1,71 @@
+{
+  "name": "memflix",
+  "version": "1.0.0",
+  "description": "Unofficial netflix application for desktop",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron --inspect .",
+    "build:macos": "electron-builder -m",
+    "build:win": "electron-builder -w",
+    "build:linux": "electron-builder -l",
+    "build:all": "electron-builder -mwl"
+  },
+  "keywords": [
+    "Electron",
+    "Netflix",
+    "Player"
+  ],
+  "build": {
+    "appId": "memflix.electron",
+    "productName": "Memflix",
+    "icon": "./build/icon.png",
+    "electronDownload": {
+      "mirror": "https://github.com/castlabs/electron-releases/releases/download/v"
+    },
+    "afterPack": "./build/afterPack.js",
+    "afterSign": "./build/afterSign.js",
+    "mac": {
+      "category": "public.app-category.video",
+      "entitlements": "./entitlements.plist",
+      "target": [
+        "dmg"
+      ]
+    },
+    "win": {
+      "verifyUpdateCodeSignature": false,
+      "target": [
+        "nsis"
+      ]
+    },
+    "linux": {
+      "category": "Video",
+      "target": [
+        "tar.gz",
+        "snap",
+        "deb",
+        "rpm"
+      ]
+    }
+  },
+  "author": "Aleksandr Miroshnikov",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "github:castlabs/electron-releases#v13.1.8-wvvmp",
+    "electron-builder": "^22.11.7",
+    "electron-notarize": "^1.1.0",
+    "electron-packager": "^15.3.0"
+  },
+  "dependencies": {
+    "electron-native-notification": "^1.2.1",
+    "electron-store": "^8.0.0",
+    "node-notifier": "^10.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alexanik/memflix.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Alexanik/memflix/issues"
+  },
+  "homepage": "https://github.com/Alexanik/memflix#readme"
+}
