@@ -17,6 +17,10 @@ class Player extends EventEmmiter {
             this.duration = duration
         })
 
+        this.ipcMain.on('EVENT_VIDEO_HIDE', (e) => {
+            this.emit('EVENT_VIDEO_HIDE')
+        })
+
         this.ipcMain.on('EVENT_VIDEO_VOLUME_CHANGE', (e, volume) => {
             this.emit('EVENT_VIDEO_VALUE_CHANGE')
         })

@@ -41,8 +41,11 @@ class MTouchBar {
         this.touchBar = new TouchBar({
             items: [
                 this.playButton,
+                new TouchBarSpacer({ size: 'flexible' }),
                 this.currentTime,
+                new TouchBarSpacer({ size: 'flexible' }),
                 this.progressSlider,
+                new TouchBarSpacer({ size: 'flexible' }),
                 this.totalTime
             ]
         })

@@ -69,7 +69,7 @@ function createMainWindow() {
         win.loadURL('https://www.netflix.com/browse')
     else
         win.loadURL('https://www.netflix.com/watch/81031054?trackId=15036066&tctx=1%2C1%2Cce03e093-229c-4269-94f9-d943eb6cf543-51633940%2C44cc0979-3784-460f-b813-e0709545262f_34449421X54XX1628929294988%2C44cc0979-3784-460f-b813-e0709545262f_ROOT%2C')
-        
+
     win.setMenu(null)
     win.once('ready-to-show', () => {
         win.show()
@@ -146,13 +146,19 @@ app.on('widevine-ready', (version, lastVersion) => {
     let mainWindow = createMainWindow()
 
     const player = new Player(mainWindow, ipcMain)
-    
     const shortcuts = new Shortcuts(player)
     const contextMenu = createContextMenu(mainWindow)
 
     if (process.platform === "darwin") {
-        const touchBar = new MTouchBar(player)
-        mainWindow.setTouchBar(touchBar.build())
+        const touchBar = new MTouchBar(player) 
+
+        player.on('EVENT_VIDEO', () => {
+            mainWindow.setTouchBar(touchBar.build())
+        })
+
+        player.on('EVENT_VIDEO_HIDE', () => {
+            mainWindow.setTouchBar(null)
+        })
     }
 
     shortcuts.bindKeys()
