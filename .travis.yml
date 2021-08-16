@@ -19,3 +19,10 @@ jobs:
     - os: osx
       language: node_js
       node_js: "node"
+
+script:
+- |
+    if [ "$TRAVIS_OS_NAME" == "linux" ]; then
+      npm test
+    fi;
+    npm run dist
