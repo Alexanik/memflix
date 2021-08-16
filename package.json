@@ -5,10 +5,12 @@
   "main": "main.js",
   "scripts": {
     "start": "electron --inspect .",
+    "build": "electron-builder",
     "build:macos": "electron-builder -m",
     "build:win": "electron-builder -w",
     "build:linux": "electron-builder -l",
-    "build:all": "electron-builder -mwl"
+    "build:all": "electron-builder -mwl",
+    "test": "NODE_ENV=teset ./node_modules/.bin/mocha ./test/*.js"
   },
   "keywords": [
     "Electron",
@@ -52,7 +54,8 @@
     "electron": "github:castlabs/electron-releases#v13.1.8-wvvmp",
     "electron-builder": "^22.11.7",
     "electron-notarize": "^1.1.0",
-    "electron-packager": "^15.3.0"
+    "electron-packager": "^15.3.0",
+    "mocha": "^9.0.3"
   },
   "dependencies": {
     "electron-native-notification": "^1.2.1",
