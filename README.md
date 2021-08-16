@@ -26,3 +26,6 @@ Visit [wiki page](https://github.com/castlabs/electron-releases/wiki/EVS) where 
 4. Build
 ```
 npm run build-osx
+
+
+NOTE: On macOS for global shortcuts binding you must grant access to Memflix in System Preferences -> Security -> Accessibility
