@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/Alexanik/memflix.svg?branch=main)](https://travis-ci.com/Alexanik/memflix)
+
 # MEMFLIX
 
 Memflix electron browser with MacBooks's Touchbar and global shortcuts support (media buttons on your keyboard, taps on your AirPods and etc) for Netflix website
