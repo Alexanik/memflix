@@ -15,6 +15,18 @@ const settings = new Store({
     quit: {
         type: 'boolean',
         default: false
+    },
+
+    startPage: {
+        type: 'string',
+        format: 'url',
+        default: 'https://www.netflix.com/browse'
+    },
+
+    migrations: {
+        '1.0.1': store => {
+            store.set('startPage', 'https://www.netflix.com/browse')
+        }
     }
 })
 
@@ -66,9 +78,10 @@ function createMainWindow() {
     })
 
     if (!debug)
-        win.loadURL('https://www.netflix.com/browse')
+        win.loadURL(settings.get('startPage'))
     else
-        win.loadURL('https://www.netflix.com/watch/81031054?trackId=15036066&tctx=1%2C1%2Cce03e093-229c-4269-94f9-d943eb6cf543-51633940%2C44cc0979-3784-460f-b813-e0709545262f_34449421X54XX1628929294988%2C44cc0979-3784-460f-b813-e0709545262f_ROOT%2C')
+        win.loadURL(settings.get('startPage'))
+        //win.loadURL('https://www.netflix.com/watch/81031054?trackId=15036066&tctx=1%2C1%2Cce03e093-229c-4269-94f9-d943eb6cf543-51633940%2C44cc0979-3784-460f-b813-e0709545262f_34449421X54XX1628929294988%2C44cc0979-3784-460f-b813-e0709545262f_ROOT%2C')
 
     win.setMenu(null)
     win.once('ready-to-show', () => {
@@ -79,8 +92,11 @@ function createMainWindow() {
             win.webContents.openDevTools()
     })
     win.on('close', (e) => {
-        if (quitApproved)
+        if (quitApproved) {
+            settings.set('startPage', win.webContents.getURL())
+
             return
+        }
 
         e.preventDefault()
 
@@ -105,7 +121,10 @@ function createMainWindow() {
     win.webContents.on('did-navigate', (e, url) => {
         console.log(url)
     })
-
+    win.webContents.setWindowOpenHandler(({ url }) => {
+        return { action: 'deny' }
+    })
+    
     return win
 }
 
