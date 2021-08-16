@@ -25,4 +25,4 @@ script:
     if [ "$TRAVIS_OS_NAME" == "linux" ]; then
       npm test
     fi;
-    npm run dist
+    npm run build
