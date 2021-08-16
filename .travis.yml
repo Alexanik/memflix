@@ -1,4 +1,4 @@
-matrix:
+jobs:
   include:
     - os: windows
       language: node_js
@@ -14,7 +14,3 @@ matrix:
     - os: osx
       language: node_js
       node_js: "node"
-
-cache:
-  only:
-  - master
