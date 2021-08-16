@@ -1,0 +1,20 @@
+matrix:
+  include:
+    - os: windows
+      language: node_js
+      node_js: "node"
+    - os: linux
+      dist: xenial
+      services:
+        - xvfb
+      language: node_js
+      node_js: "node"
+      before_install:
+        - sudo apt-get install -y rpm
+    - os: osx
+      language: node_js
+      node_js: "node"
+
+cache:
+  only:
+  - master
