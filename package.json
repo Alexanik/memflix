@@ -19,6 +19,7 @@
   ],
   "build": {
     "appId": "memflix.electron",
+    "artifactName": "${productName}-${version}.${ext}",
     "productName": "Memflix",
     "icon": "./build/icon.png",
     "electronDownload": {
