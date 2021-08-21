@@ -1,8 +1,8 @@
 {
   "name": "memflix",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Unofficial netflix application for desktop",
-  "main": "main.js",
+  "main": "index.js",
   "scripts": {
     "start": "electron --inspect .",
     "build": "electron-builder",
@@ -50,6 +50,7 @@
     }
   },
   "author": "Aleksandr Miroshnikov",
+  "license": "MIT",
   "devDependencies": {
     "electron": "github:castlabs/electron-releases#v13.1.8-wvvmp",
     "electron-builder": "^22.11.7",
@@ -58,9 +59,7 @@
     "mocha": "^9.0.3"
   },
   "dependencies": {
-    "electron-native-notification": "^1.2.1",
-    "electron-store": "^8.0.0",
-    "node-notifier": "^10.0.0"
+    "electron-fast-media-client": "github:Alexanik/electron-fast-media-client"
   },
   "repository": {
     "type": "git",
